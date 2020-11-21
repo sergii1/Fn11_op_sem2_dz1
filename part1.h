@@ -33,7 +33,7 @@ void outputVector(vector<int>fromf) {
 }
 
 
-//1.1//
+//1.1.	Функция, выгружающая данные с использованием файловых потоков
 void CreateData_s(const string& filename) {
 	srand(time(NULL));
 	ofstream file(filename);
@@ -47,7 +47,8 @@ void CreateData_s(const string& filename) {
 	}
 }
 
-//1.2//
+//1.2.	Функция, использующая алгоритм generate для инициализации вспомогательного контейнера 
+//и алгоритм copy для вывода его содержимого в файл с использованием потоковых итераторов
 void CreateData_i(const string& filename) {
 	vector<int> tofile(100);
 	generate(tofile.begin(), tofile.end(), []() {return  rand() % 101 - 50; });
@@ -64,7 +65,7 @@ void CreateData_i(const string& filename) {
 
 }
 
-//2.1//
+//2.1.	Функция, загружающая данные с использованием файловых потоков.
 template<typename ContainerType>
 void LoadData_s(ContainerType& container, const string& filename) {
 	ifstream file(filename);
@@ -81,7 +82,7 @@ void LoadData_s(ContainerType& container, const string& filename) {
 	}
 }
 
-//2.2//
+//2.2 Функция, загружающая данные с использованием потоковых итераторов и алгоритма copy
 template<typename ContainerType>
 void LoadData_i(ContainerType& container, const string& filename) {
 	ifstream file(filename);
@@ -89,11 +90,13 @@ void LoadData_i(ContainerType& container, const string& filename) {
 		cerr << " file can not be opened\"" << filename << "\"" << endl;
 		exit(EXIT_FAILURE);
 	}
-	copy(istream_iterator<int>(file), istream_iterator<int>(), back_inserter(container));
+
+	copy(istream_iterator<ContainerType::value_type>(file), istream_iterator<ContainerType::value_type>(), back_inserter(container));
 }
 
 
-//3.1//
+//3.1 шаблонная функция, принимающая последовательный контейнер данного типа. Должна добавлять в конец контейнера результата сумму и 
+//среднее арифметическое элементов контейнера по абсолютной величине
 template <class Type>
 void Modify_1(Type& container) {
 	int maximum = *max_element(container.begin(), container.end());
@@ -116,7 +119,7 @@ void Modify_1(Type& container) {
 	container.push_back(sum);
 	container.push_back(sr);
 }
-//3.2//
+//3.2 функция, принимающая аргументы-итераторы
 template <typename IteratorType>
 void Modify_2(IteratorType begin, IteratorType end)
 {
@@ -135,14 +138,16 @@ void Modify_2(IteratorType begin, IteratorType end)
 		++iter;
 	}
 	iter = begin;
-	int raznost = maximum - minimum;
+	
+	typename IteratorType::value_type raznost = maximum - minimum;
 	while (iter != end) {
 		if (*(iter) % 2 == 0)
 			*iter = raznost;
 		iter++;
 	}
 }
-//3.3//
+//3.3 функция, использующая алгоритм for_each(). Конкретную операцию передавать в виде функционального объекта
+// или лямбда-функции
 template <class Type>
 void Modify_3(Type& container) {
 	int maximum = *max_element(container.begin(), container.end());
@@ -151,8 +156,9 @@ void Modify_3(Type& container) {
 	for_each(container.begin(), container.end(), [&](auto &cur) { if (cur % 2 == 0) { cur = raznost; }});
 
 }
-//4.1//
 
+//4.1 функция, использующая алгоритм transform() и потоковые итераторы для одновременного считывая данных из файла, их преобразования и 
+// вывода в файл результата
 template <typename IteratorType>
 void Modify_4(const string& fileName, IteratorType begin, IteratorType end) {
 
@@ -187,7 +193,7 @@ void Modify_4(const string& fileName, IteratorType begin, IteratorType end) {
 
 
 }
-//4.2//
+//4.1 Функция, выгружающая данные с использованием файловых потоков.
 template<typename ContainerType>
 void OutputResult_s(const string& filename, ContainerType& container) {
 	srand(time(NULL));
@@ -206,6 +212,7 @@ void OutputResult_s(const string& filename, ContainerType& container) {
 	file.close();
 }
 
+//4.2.	Функция, использующая алгоритм copy для вывода контейнера в файл с использованием потоковых итераторов
 template <typename ContainerType>
 void OutputResult_i(const string& filename, ContainerType& container)
 {

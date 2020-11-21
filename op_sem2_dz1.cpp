@@ -93,48 +93,56 @@ int main()
 				case 3: {
 					LoadData_i(vect, "file1");
 					outputVector(vect);
+					_getch();
 				}
 						break;
 
 				case 4: {
-					LoadData_i(vect, "file2");
+					LoadData_i(vect, "file1");
 					outputVector(vect);
+					_getch();
 				}
 						break;
 
 				case 5: {
 					Modify_1(vect);
 					outputVector(vect);
+					_getch();
 				}
 						break;
 
 				case 6: {
 					Modify_2(vect.begin(), vect.end());
 					outputVector(vect);
+					_getch();
 				}
 						break;
 
 				case 7: {
 					Modify_3(vect);
 					outputVector(vect);
+					_getch();
 				}
 						break;
 
 				case 8: {
 					Modify_4("modif_4", vect.begin(), vect.end());
-					outputVector(vect);
+					OutputResult_i("modif_4", vect);
+					_getch();
 				}
 						break;
 
 				case 9: {
 					OutputResult_s("result1", vect);
-					outputVector(vect);
+				
+					_getch();
 				}
 						break;
 
 				case 10: {
 					OutputResult_i("result1", vect);
-					outputVector(vect);
+					
+					_getch();
 				}
 						 break;
 
@@ -145,6 +153,7 @@ int main()
 
 		case 2: {
 			while (ch != 0) {
+				system("cls");
 				cout << "0 - выход" << endl;
 				cout << "1 - добавить запись" << endl;
 				cout << "2 - удалить запись " << endl;
@@ -158,6 +167,7 @@ int main()
 					session tmp;
 					cin >> tmp;
 					fw.add_record(f,tmp);
+					_getch();
 				}
 						break;
 
@@ -178,6 +188,7 @@ int main()
 					cout << endl;
 
 					fw.delete_record(group_code,record_book,subj_name);
+					_getch();
 				}
 						break;
 
@@ -201,6 +212,7 @@ int main()
 					session tmp;
 					cin >> tmp;
 					fw.change_record("data", group_code, record_book, subj_name, tmp);
+					_getch();
 				}
 						break;
 
@@ -208,18 +220,21 @@ int main()
 
 					fw.search_element([](session el, session el2) {
 						bool a = el.course > el2.course;
-						cout << a << endl;
+						//cout << a << endl;
 						return a; }, 1);
+					_getch();
 				}
 						break;
 
 				case 5: {
 					fw.toText("data");
+					_getch();
 				}
 						break;
 
 				case 6: {
 					fw.toConsole("data");
+					_getch();
 				}
 						break;
 				}
@@ -230,4 +245,5 @@ int main()
 	_getch();
 	return 0;
 }
+
 

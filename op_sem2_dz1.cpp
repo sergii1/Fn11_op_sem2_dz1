@@ -6,51 +6,7 @@
 using namespace std;
 int main()
 {
-	//const string filename2 = "oops";
-	//CreateData_i(filename2);
-	//outputData(filename2);
-	//vector<int>fromf;
-	///*LoadData_s(fromf, filename2);*/
-	//LoadData_i(fromf, filename2);
-	//cout << "\n";
-	//outputVector(fromf);
-	//const string filename3 = "m4";
-	////Modify_1(fromf);
-	////Modify_3(fromf);
-	////Modify_2( fromf.begin(), fromf.end());
-	//Modify_4(filename3, fromf.begin(), fromf.end());
-	//OutputResult_s(filename3, fromf);
 
-	//////OutputResult_i(filename2, fromf);
-	////OutputResult_s(filename2, fromf);
-	//session p{ 3,"FN11-32B","CHEPURNOI","11111111","MATAN",4 };
-	setlocale(0, "RUSSIAN");
-
-	/*add_record("data", { 3,"fn11-32b","chepurnoi","11111111","matan",4 });
-	add_record("data", { 3,"fn11-33b","petrov","11112222","linal",4 });
-	add_record("data", { 3,"fn11-33b","shamshidov","1123112","angem",5 });
-	add_record("data", { 3,"fn11-31b","prusov","1123119","c++",5 });
-	find_record("data", "fn11-31b", "1123119", "c++");
-	toText("data");
-	toText("find_result");
-	delete_record( "data","fn11-32b", "11111111", "matan");
-	toText("BUFFER");*/
-	
-	/*char f[] = "data";
-	file_work fw(f);
-	fw.add_record("data", { 1,"fn11-32b","chepurnoi","11111111","matan",4 });
-	fw.add_record("data", { 2,"fn11-33b","petrov","11112222","linal",4 });
-	fw.add_record("data", { 4,"fn11-33b","shamshidov","1123112","angem",5 });
-	fw.add_record("data", { 5,"fn11-31b","prusov","1123119","c++",5 });
-	cout << std::boolalpha;
-	fw.search_element([](session el, session el2) {
-		bool a = el.course >el2.course;
-		cout << a <<endl;
-		return a; },1);
-	fw.toText("data");
-	fw.toText("Find_Result");
-	fw.delete_record("fn11-32b", "11111111", "matan");
-	fw.toText( "BUFFER");*/
 	char f[] = "data";
 	file_work fw(f);
 	int ch = 1;
@@ -217,16 +173,10 @@ int main()
 
 				case 4: {
 
-					fw.search_element([](session el, session el2) {
-						bool a = el.course > el2.course;
-						//cout << a << endl;
-						return a; }, 1);
-					/*
-					 * fw.search_element([](session el, session el2) {
-						bool a = el.group_code > el2.group_code;
-						//cout << a << endl;
-						return a; }, 2);
-					 */
+					fw.search_element([](session el) {
+						bool a = el.course > 1;
+						return a; });
+
 					getchar();
 				}
 						break;

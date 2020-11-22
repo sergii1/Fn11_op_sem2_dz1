@@ -1,7 +1,6 @@
-﻿#include "pch.h"
 #include <iostream>
 #include "part1.h"
-#include <conio.h>
+//#include <conio.h>
 #include "part2.h"
 #include "part2V2.h"
 using namespace std;
@@ -86,63 +85,63 @@ int main()
 						break;
 
 				case 2: {
-					CreateData_i("file2");
+					CreateData_i("file1");
 				}
 						break;
 
 				case 3: {
-					LoadData_i(vect, "file1");
+					LoadData_s(vect, "file1");
 					outputVector(vect);
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 4: {
 					LoadData_i(vect, "file1");
 					outputVector(vect);
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 5: {
 					Modify_1(vect);
 					outputVector(vect);
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 6: {
 					Modify_2(vect.begin(), vect.end());
 					outputVector(vect);
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 7: {
 					Modify_3(vect);
 					outputVector(vect);
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 8: {
 					Modify_4("modif_4", vect.begin(), vect.end());
 					OutputResult_i("modif_4", vect);
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 9: {
 					OutputResult_s("result1", vect);
 				
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 10: {
 					OutputResult_i("result1", vect);
 					
-					_getch();
+					getchar();
 				}
 						 break;
 
@@ -167,7 +166,7 @@ int main()
 					session tmp;
 					cin >> tmp;
 					fw.add_record(f,tmp);
-					_getch();
+					getchar();
 				}
 						break;
 
@@ -188,7 +187,7 @@ int main()
 					cout << endl;
 
 					fw.delete_record(group_code,record_book,subj_name);
-					_getch();
+					getchar();
 				}
 						break;
 
@@ -212,7 +211,7 @@ int main()
 					session tmp;
 					cin >> tmp;
 					fw.change_record("data", group_code, record_book, subj_name, tmp);
-					_getch();
+					getchar();
 				}
 						break;
 
@@ -222,19 +221,25 @@ int main()
 						bool a = el.course > el2.course;
 						//cout << a << endl;
 						return a; }, 1);
-					_getch();
+					/*
+					 * fw.search_element([](session el, session el2) {
+						bool a = el.group_code > el2.group_code;
+						//cout << a << endl;
+						return a; }, 2);
+					 */
+					getchar();
 				}
 						break;
 
 				case 5: {
 					fw.toText("data");
-					_getch();
+					getchar();
 				}
 						break;
 
 				case 6: {
 					fw.toConsole("data");
-					_getch();
+					getchar();
 				}
 						break;
 				}
@@ -242,7 +247,7 @@ int main()
 		}
 		}
 	}
-	_getch();
+	getchar();
 	return 0;
 }
 

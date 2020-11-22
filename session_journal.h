@@ -11,38 +11,38 @@ struct session
 	int mark;
 
 	friend std::istream& operator>>(std::istream& p_In, session& p_rec) {
-		cout << "\nÂâåäèòå êóðñ : ";
+		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÑƒÑ€Ñ : ";
 		p_In >> p_rec.course;
-		cout << "\nÂâåäèòå êîä ãðóïïû : ";
+		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð´ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ : ";
 		p_In >> p_rec.group_code;
-		cout << "\nÂâåäèòå ôàìèëèþ ñòóäåíòà : ";
+		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð°Ð¼Ð¸Ð»Ð¸ÑŽ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° : ";
 		p_In >> p_rec.student_surname;
-		cout << "\nÂâåäèòå íîìåð çà÷åòêè : ";
+		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð·Ð°Ñ‡ÐµÑ‚ÐºÐ¸ : ";
 		p_In >> p_rec.record_book;
-		cout << "\nÂâåäèòå äèñöèïëèíó : ";
+		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¸ÑÑ†Ð¸Ð¿Ð»Ð¸Ð½Ñƒ : ";
 		p_In >> p_rec.subj_name;
-		cout << "\nÂâåäèòå îöåíêó : ";
+		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ñ†ÐµÐ½ÐºÑƒ : ";
 		p_In >> p_rec.mark;
 		cout << "\n";
 		return p_In;
 	}
 
-	friend std::ifstream& operator>>(std::ifstream& p_In, session& p_rec) {
-		cout << "\nÂâåäèòå êóðñ : ";
-		p_In >> p_rec.course;
-		cout << "\nÂâåäèòå êîä ãðóïïû : ";
-		p_In >> p_rec.group_code;
-		cout << "\nÂâåäèòå ôàìèëèþ ñòóäåíòà : ";
-		p_In >> p_rec.student_surname;
-		cout << "\nÂâåäèòå íîìåð çà÷åòêè : ";
-		p_In >> p_rec.record_book;
-		cout << "\nÂâåäèòå äèñöèïëèíó : ";
-		p_In >> p_rec.subj_name;
-		cout << "\nÂâåäèòå îöåíêó : ";
-		p_In >> p_rec.mark;
-		cout << "\n";
-		return p_In;
-	}
+//	friend std::ifstream& operator>>(std::ifstream& p_In, session& p_rec) {
+//		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÑƒÑ€Ñ : ";
+//		p_In >> p_rec.course;
+//		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð´ Ð³Ñ€ÑƒÐ¿Ð¿Ñ‹ : ";
+//		p_In >> p_rec.group_code;
+//		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ„Ð°Ð¼Ð¸Ð»Ð¸ÑŽ ÑÑ‚ÑƒÐ´ÐµÐ½Ñ‚Ð° : ";
+//		p_In >> p_rec.student_surname;
+//		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð¼ÐµÑ€ Ð·Ð°Ñ‡ÐµÑ‚ÐºÐ¸ : ";
+//		p_In >> p_rec.record_book;
+//		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð¸ÑÑ†Ð¸Ð¿Ð»Ð¸Ð½Ñƒ : ";
+//		p_In >> p_rec.subj_name;
+//		cout << "\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¾Ñ†ÐµÐ½ÐºÑƒ : ";
+//		p_In >> p_rec.mark;
+//		cout << "\n";
+//		return p_In;
+//	}
 
 	/*friend std::ofstream& operator <<(std::ofstream& p_out, const session& p_rec) {
 		p_out << p_rec.course << p_rec.group_code << p_rec.student_surname << p_rec.record_book << p_rec.subj_name << p_rec.mark;

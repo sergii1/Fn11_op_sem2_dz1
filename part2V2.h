@@ -14,7 +14,6 @@ class file_work{
 	char file_name[20];
 public:
 	file_work(char* p_file_name) {
-
 		for (int i = 0; i < strlen(p_file_name); ++i)
 			file_name[i] = p_file_name[i];
 		file_name[strlen(p_file_name)] = '\0';
@@ -22,7 +21,7 @@ public:
 	}
 
 	template <typename Pred>
-	vector<session> search_element(Pred pred,int find_id){
+	vector<session> search_element(Pred pred, int find_id){
 
 		vector<session> res;
 		std::ofstream fileBuff("Find_Result", std::ios::out | std::ios_base::binary);
@@ -34,9 +33,9 @@ public:
 		switch (find_id)
 		{
 		
-		//поиск по курсу
+		//РїРѕРёСЃРє РїРѕ РєСѓСЂСЃСѓ
 		case 1: {
-			cout << "введите номер курса : ";
+			cout << "РІРІРµРґРёС‚Рµ РЅРѕРјРµСЂ РєСѓСЂСЃР° : ";
 			cin>>tmp.course;
 			//cout << endl;
 			while (file.read((char*)&rec, sizeof(rec))) {
@@ -46,9 +45,9 @@ public:
 		}
 		break;
 		
-		//поиск по коду группы
+		//РїРѕРёСЃРє РїРѕ РєРѕРґСѓ РіСЂСѓРїРїС‹
 		case 2: {
-			cout << "введите код группы : ";
+			cout << "РІРІРµРґРёС‚Рµ РєРѕРґ РіСЂСѓРїРїС‹ : ";
 			cin >> tmp.group_code;
 			cout << endl;
 			while (file.read((char*)&rec, sizeof(rec))) {
@@ -58,9 +57,9 @@ public:
 		}
 		break;
 		
-		//поиск по фамилии
+		//РїРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё
 		case 3: {
-			cout << "введите фамилию : ";
+			cout << "РІРІРµРґРёС‚Рµ С„Р°РјРёР»РёСЋ : ";
 			cin >> tmp.student_surname;
 			cout << endl;
 			while (file.read((char*)&rec, sizeof(rec))) {
@@ -70,9 +69,9 @@ public:
 		}
 		break;
 
-		//поиск по зачетке
+		//РїРѕРёСЃРє РїРѕ Р·Р°С‡РµС‚РєРµ
 		case 4: {
-			cout << "введите номер зачетки : ";
+			cout << "РІРІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°С‡РµС‚РєРё : ";
 			cin >> tmp.record_book;
 			cout << endl;
 			while (file.read((char*)&rec, sizeof(rec))) {
@@ -82,9 +81,9 @@ public:
 		}
 		break;
 		
-		//поиск по предмету
+		//РїРѕРёСЃРє РїРѕ РїСЂРµРґРјРµС‚Сѓ
 		case 5: {
-			cout << "введите дисциплину : ";
+			cout << "РІРІРµРґРёС‚Рµ РґРёСЃС†РёРїР»РёРЅСѓ : ";
 			cin >> tmp.subj_name;
 			cout << endl;
 			while (file.read((char*)&rec, sizeof(rec))) {
@@ -94,9 +93,9 @@ public:
 		}
 		break;
 		
-		//поиск по оценке		
+		//РїРѕРёСЃРє РїРѕ РѕС†РµРЅРєРµ		
 		case 6: {
-			cout << "введите оценку : ";
+			cout << "РІРІРµРґРёС‚Рµ РѕС†РµРЅРєСѓ : ";
 			cin >> tmp.mark;
 			cout << endl;
 			while (file.read((char*)&rec, sizeof(rec))) {
@@ -132,15 +131,14 @@ public:
 		std::ifstream file(file_name, std::ios_base::binary);
 		if (file.is_open()) {
 			session rec;
-			while (!file.eof()) {
-				file.read((char*)&rec, sizeof(rec));
+			while (file.read((char*)&rec, sizeof(rec))) {
 				if ((strcmp(rec.group_code, group_code) != 0) || (strcmp(rec.record_book, record_book) != 0) || (strcmp(rec.subj_name, subj_name) != 0))
 					fileBuff.write((char *)&rec, sizeof(rec));
 				else
 					fileBuff.write((char *)&p_rec, sizeof(p_rec));
 			}
-			remove("file_name");
-			rename("BUFFER", "file_name");
+			remove(file_name);
+			rename("BUFFER", file_name);
 		}
 		else std::cout << "File not found" << std::endl;
 		file.close();

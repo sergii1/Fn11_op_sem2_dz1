@@ -1,6 +1,6 @@
 #pragma once
 #include "session_journal.h"
-#include <String>
+#include <cstring>
 #include <fstream>
 #include <iomanip>
 
@@ -61,7 +61,7 @@ void find_record(const char file_name[], const char group_code[], const char rec
 			if ((strcmp(rec.group_code, group_code) == 0) && (strcmp(rec.record_book, record_book) == 0) && (strcmp(rec.subj_name, subj_name) == 0))
 				fileBuff.write((char *)&rec, sizeof(rec));
 		}
-		cout << "Íàéäåííûå çàïèñè âûâåäåíû â ôàéë Find_Result" << std::endl;
+      cout << "ÐÐ°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ðµ Ð·Ð°Ð¿Ð¸ÑÐ¸ Ð²Ñ‹Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð² Ñ„Ð°Ð¹Ð» Find_Result" << std::endl;
 	}
 	else std::cout << "File not found" << std::endl;
 	file.close();

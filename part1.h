@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <string>
-#include <conio.h>
-#include <Windows.h>
 #include <fstream>
 #include <iostream>
 #include <cstdlib>
@@ -90,8 +88,7 @@ void LoadData_i(ContainerType& container, const string& filename) {
 		cerr << " file can not be opened\"" << filename << "\"" << endl;
 		exit(EXIT_FAILURE);
 	}
-
-	copy(istream_iterator<ContainerType::value_type>(file), istream_iterator<ContainerType::value_type>(), back_inserter(container));
+	copy(istream_iterator<typename ContainerType::value_type>(file), istream_iterator<typename ContainerType::value_type>(), back_inserter(container));
 }
 
 
@@ -196,7 +193,6 @@ void Modify_4(const string& fileName, IteratorType begin, IteratorType end) {
 //4.1 Функция, выгружающая данные с использованием файловых потоков.
 template<typename ContainerType>
 void OutputResult_s(const string& filename, ContainerType& container) {
-	srand(time(NULL));
 	ofstream file(filename);
 	if (!file) {
 		cerr << " file can not be opened\"" << filename << "\"" << endl;

@@ -29,7 +29,6 @@ class file_work {
       return res;
     session rec;
 
-
     //cout << endl;
     while (file.read((char *) &rec, sizeof(rec))) {
       if (pred(rec))
@@ -190,4 +189,24 @@ class file_work {
       cout << std::right << "\n";
     } else std::cout << "File not found" << std::endl;
   }
+
+  template<typename Pred>
+  double findAvgByCond(Pred pred) {
+    vector<session> res;
+    std::ifstream file(file_name, std::ios_base::binary);
+    if (!file.is_open())
+      return 0;
+    session rec;
+    int amount = 0;
+    double avg;
+    while (file.read((char *) &rec, sizeof(rec))) {
+      if (pred(rec)){
+        amount += 1;
+        avg+=rec.mark;
+        res.push_back(rec);
+      }
+    }
+    return avg;
+  }
 };
+
